@@ -1,0 +1,3 @@
+The following tiles have failed normalization:
+0_failed_to_normalise_macenko.txt: cannot identify image file '../1_tiling/outputs/satac_C1/tiling_output/v3_allspots/tiles_100/0_failed_to_normalise_macenko.txt'
+0_started_at_2025-01-21 15:38:26.172628_finished_at_2025-01-21 16:39:52.492238.txt: cannot identify image file '../1_tiling/outputs/satac_C1/tiling_output/v3_allspots/tiles_100/0_started_at_2025-01-21 15:38:26.172628_finished_at_2025-01-21 16:39:52.492238.txt'

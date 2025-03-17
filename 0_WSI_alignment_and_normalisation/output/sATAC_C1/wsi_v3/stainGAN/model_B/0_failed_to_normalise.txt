@@ -1,0 +1,2 @@
+The following are the tiles not normalised:
+BCSA4_A2_sATAC_C1_adjacent-Spot000001_v3_newrot_newcrop_realcolors_nofakescaling.jpg
