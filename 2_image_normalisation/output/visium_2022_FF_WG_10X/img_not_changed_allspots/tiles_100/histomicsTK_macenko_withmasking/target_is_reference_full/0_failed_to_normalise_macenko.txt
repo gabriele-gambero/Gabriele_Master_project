@@ -1,0 +1,2 @@
+The following tiles have failed normalization:
+TGAGTGGTCCGTGACG-1_row30_col84_100um.jpg: index 1 is out of bounds for axis 0 with size 0

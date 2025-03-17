@@ -1,0 +1,24 @@
+# Ignore large files
+*.h5
+*.tif
+*.jpg
+*.pickle
+*.out
+5_integration_and_correlation/signac_filtered_brca_q0_peak_bc_matrix.csv
+*.pdf
+*.rds
+.gitignore
+
+# Ignore folders
+__pycache__/
+data/
+1_tiling/outputs/
+1_tiling/output/34C/
+2_image_normalisation/output/34C/
+tiles_55/
+atac_peek/
+2_image_normalisation/temp/
+2_anndatas/
+.idea/
+.history/
+checkpoints/

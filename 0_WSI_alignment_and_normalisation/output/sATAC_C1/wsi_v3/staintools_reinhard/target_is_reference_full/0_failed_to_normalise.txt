@@ -1,0 +1,1 @@
+../data/spatial_atac/modified_images/BCSA4_A2_sATAC_C1_adjacent-Spot000001_v3_newrot_newcrop_realcolors_nofakescaling.jpg: Image size (2291662848 pixels) exceeds limit of 178956970 pixels, could be decompression bomb DOS attack.
