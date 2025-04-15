@@ -15,6 +15,9 @@ import umap.umap_ as umap
 from sklearn.manifold import TSNE
 from sklearn.cluster import KMeans, AgglomerativeClustering
 from hdbscan import HDBSCAN
+import igraph as ig
+import leidenalg
+from sklearn.neighbors import NearestNeighbors
 
 # ------------------------------------------------------------------------------
 # Function to load a pickle file as a DataFrame
@@ -288,6 +291,80 @@ def single_clustering_by_method(sample_name, selected_components, n_clust, TILE_
     else:
         fig.suptitle('Clustering for the ST sample', fontsize=16)
     
+    plt.tight_layout()
+    plt.show()
+
+    return fig, clustering_results
+
+
+# ----------------------------------------------------------------------------
+def single_clustering_by_method_v2(sample_name, selected_components, n_clust, TILE_SIZE, selected_methods=None, leiden_resolution=0.8):
+
+    available_clustering_methods = {
+        "K-Means": KMeans(n_clusters=n_clust, random_state=123),
+        "HDBSCAN": HDBSCAN(min_cluster_size=15),
+        "Agglomerative": AgglomerativeClustering(n_clusters=n_clust, linkage='ward'),
+        "Leiden": "empty"
+    }
+
+    if selected_methods is None:
+        methods = available_clustering_methods
+    else:
+        methods = {name: available_clustering_methods[name] for name in selected_methods if name in available_clustering_methods}
+
+    clustering_results = {}
+
+    fig, axes = plt.subplots(1, len(methods), figsize=(len(methods) * 6, 6))
+    if len(methods) == 1:
+        axes = [axes]  # Ensure it's iterable for a single method
+
+    for i, (method_name, model) in enumerate(methods.items()):
+        if method_name == "Leiden":
+            # Build kNN graph
+            neighbors = NearestNeighbors(n_neighbors=15, metric='euclidean') # building graph
+            neighbors.fit(selected_components.values)
+            knn_graph = neighbors.kneighbors_graph(selected_components.values, mode='connectivity') # binary sparse adjacency matrix
+
+            # Convert to igraph
+            sources, targets = knn_graph.nonzero() # only edges
+            edges = list(zip(sources.tolist(), targets.tolist())) # edge list
+            G = ig.Graph(edges=edges, directed=False) # undirected graph 
+            G.vs["name"] = list(range(len(selected_components))) # name of the edges
+
+            # Leiden clustering - RB = Reichardt-Bornholdt model
+            partition = leidenalg.find_partition(G, leidenalg.RBConfigurationVertexPartition, 
+                                                 resolution_parameter=leiden_resolution, # granularity
+                                                 seed=123)
+            cluster_labels = np.array(partition.membership) # cluster labels
+            print(f"Number of Leiden clusters: {np.unique(cluster_labels)}")
+        else:
+            cluster_labels = model.fit_predict(selected_components.values)
+
+        unique_labels = np.unique(cluster_labels)
+        colors = sns.color_palette("husl", len(unique_labels))
+        label_color_map = {label: colors[idx] for idx, label in enumerate(unique_labels)}
+        color_list = np.array([label_color_map[label] for label in cluster_labels])
+
+        temp = pd.merge(
+            pd.DataFrame(cluster_labels, index=selected_components.index, columns=["Cluster"]),
+            pd.DataFrame(color_list, index=selected_components.index, columns=["R", "G", "B"]),
+            left_index=True, right_index=True
+        )
+
+        clustering_results[method_name] = temp
+
+        ax = axes[i]
+        scatter = ax.scatter(selected_components.iloc[:, 0], selected_components.iloc[:, 1], 
+                             c=color_list, s=5)
+        ax.set_title(f"{method_name} Clustering - {TILE_SIZE}µm tiles")
+        ax.set_xlabel("Component 1")
+        ax.set_ylabel("Component 2")
+
+    if "satac" in sample_name:
+        fig.suptitle('Clustering for the sATAC sample', fontsize=16)
+    else:
+        fig.suptitle('Clustering for the ST sample', fontsize=16)
+
     plt.tight_layout()
     plt.show()
 
