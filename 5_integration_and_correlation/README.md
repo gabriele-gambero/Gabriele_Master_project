@@ -126,11 +126,11 @@ nohup dca output/sATAC_preprocessing/gene_activity_selected_220327_C1_brca.csv o
 
   - for **Visium** gene counts:
 ```sh
-nohup dca output/Visium_preprocessing/gene_counts_<VISIUM_SAMPLE_NAME>.csv output/Visium_preprocessing/dca_gene_counts_<VISIUM_SAMPLE_NAME> --threads 6 --saveweights > nohup_for_<VISIUM_SAMPLE_NAME>_dca_gene_counts.out &
+nohup dca output/Visium_preprocessing/<VISIUM_SAMPLE_NAME>/gene_counts_<VISIUM_SAMPLE_NAME>.csv output/Visium_preprocessing/<VISIUM_SAMPLE_NAME>/dca_gene_counts_<VISIUM_SAMPLE_NAME> --threads 6 --saveweights > nohup_for_<VISIUM_SAMPLE_NAME>_dca_gene_counts.out &
 ```
     or, adapted to my case:
 ```sh
-nohup dca output/Visium_preprocessing/gene_counts_FFPE.csv output/Visium_preprocessing/dca_gene_counts_FFPE2 --threads 6 --saveweights > nohup_for_FFPE_dca_gene_counts.out &
+nohup dca output/Visium_preprocessing/visium_FFPE_dcis_idc_10X_img_not_changed_allspots/gene_counts.csv output/Visium_preprocessing/visium_FFPE_dcis_idc_10X_img_not_changed_allspots/dca_gene_counts --threads 6 --saveweights > nohup_for_visium_FFPE_dcis_idc_10X_img_not_changed_allspots_dca_gene_counts.out &
 ```
 
 
@@ -203,36 +203,3 @@ docker exec -it dca_container_034 dca ~/the_project/5_integration_and_correlatio
 ```sh 
 docker exec -it dca_container_034 dca data/data_signac_filtered_brca_q0_peak_bc_matrix.csv data/docker_dated_dca_peaks_q0_brca
 ```
-
-
-
-
-
-screen:
-
-[I 2025-03-26 19:14:36.999 ServerApp] jupyter_lsp | extension was successfully linked.
-[I 2025-03-26 19:14:37.005 ServerApp] jupyter_server_terminals | extension was successfully linked.
-[I 2025-03-26 19:14:37.012 ServerApp] jupyterlab | extension was successfully linked.
-[I 2025-03-26 19:14:37.016 ServerApp] notebook | extension was successfully linked.
-[I 2025-03-26 19:14:40.919 ServerApp] notebook_shim | extension was successfully linked.
-[I 2025-03-26 19:14:41.191 ServerApp] notebook_shim | extension was successfully loaded.
-[I 2025-03-26 19:14:41.195 ServerApp] jupyter_lsp | extension was successfully loaded.
-[I 2025-03-26 19:14:41.196 ServerApp] jupyter_server_terminals | extension was successfully loaded.
-[I 2025-03-26 19:14:41.198 LabApp] JupyterLab extension loaded from /disk2/user/gabgam/miniconda3/envs/r_env_corr/lib/python3.13/site-packages/jupyterlab
-[I 2025-03-26 19:14:41.198 LabApp] JupyterLab application directory is /disk2/user/gabgam/miniconda3/envs/r_env_corr/share/jupyter/lab
-[I 2025-03-26 19:14:41.212 LabApp] Extension Manager is 'pypi'.
-[I 2025-03-26 19:14:41.789 ServerApp] jupyterlab | extension was successfully loaded.
-[I 2025-03-26 19:14:41.792 ServerApp] notebook | extension was successfully loaded.
-[I 2025-03-26 19:14:41.793 ServerApp] Serving notebooks from local directory: /disk2/user/gabgam/the_project/5_integration_and_correlation
-[I 2025-03-26 19:14:41.793 ServerApp] Jupyter Server 2.15.0 is running at:
-[I 2025-03-26 19:14:41.793 ServerApp] http://cbb.medh.ki.se:8888/tree?token=f1a2abcc2ffe168b8bb272b95f19e63b891f0721f2376b43
-[I 2025-03-26 19:14:41.793 ServerApp]     http://127.0.0.1:8888/tree?token=f1a2abcc2ffe168b8bb272b95f19e63b891f0721f2376b43
-[I 2025-03-26 19:14:41.793 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
-[C 2025-03-26 19:14:41.824 ServerApp] 
-    
-    To access the server, open this file in a browser:
-        file:///disk2/user/gabgam/.local/share/jupyter/runtime/jpserver-885623-open.html
-    Or copy and paste one of these URLs:
-        http://cbb.medh.ki.se:8888/tree?token=f1a2abcc2ffe168b8bb272b95f19e63b891f0721f2376b43
-        http://127.0.0.1:8888/tree?token=f1a2abcc2ffe168b8bb272b95f19e63b891f0721f2376b43
-[I 2025-03-26 19:14:42.223 ServerApp] Skipped non-installed server(s): bash-language-server, dockerfile-language-server-nodejs, javascript-typescript-langserver, jedi-language-server, julia-language-server, pyright, python-language-server, python-lsp-server, r-languageserver, sql-language-server, texlab, typescript-language-server, unified-language-server, vscode-css-languageserver-bin, vscode-html-languageserver-bin, vscode-json-languageserver-bin, yaml-language-server
