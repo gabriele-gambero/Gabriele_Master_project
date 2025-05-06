@@ -94,45 +94,49 @@ pip install xlrd==1.2.0
 ```
 
 On terminal, in a Conda environment with TensorFlow and the DCA package installed, such as `dca_mamba_37` run:
+
+<ul>
+
   - for **subsetted** prenormalised peaks data:
 ```sh
 nohup dca output/sATAC_preprocessing/data_signac_<SAMPLE_NAME>_selected_brca_q0_peak_bc_matrix.csv output/sATAC_preprocessing/dated_dca_<SAMPLE_NAME>_peaks_q0_brca --threads 3 --nosizefactors --nonorminput --nologinput --saveweights --nocheckcounts > nohup_for_dca_<SAMPLE_NAME>_data.out &
 ```
-    or, adapted to my case:
+or, adapted to my case:
 ```sh
 nohup dca output/sATAC_preprocessing/data_signac_220327_C1_selected_brca_q0_peak_bc_matrix2.csv output/sATAC_preprocessing/dated_dca_220327_C1_peaks_q0_brca --threads 6 --nosizefactors --nonorminput --nologinput --saveweights --nocheckcounts > nohup_for_dca_220327_C1_data.out &
 ```
-
+<br>
 
   - for **subsetted** counts data:
 ```sh
 nohup dca output/sATAC_preprocessing/counts_signac_<SAMPLE_NAME>_selected_brca_q0_peak_bc_matrix.csv output/sATAC_preprocessing/counted_dca_<SAMPLE_NAME>_peaks_q0_brca --threads 3 --nosizefactors --nonorminput --nologinput --saveweights > nohup_for_dca_<SAMPLE_NAME>_counts.out &
 ```
-    or, adapted to my case:
+or, adapted to my case:
 ```sh
 nohup dca output/sATAC_preprocessing/counts_signac_220327_C1_selected_brca_q0_peak_bc_matrix2.csv output/sATAC_preprocessing/counted_dca_220327_C1_peaks_q0_brca2 --threads 6 --nosizefactors --saveweights > nohup_for_dca_220327_C1_counts.out &
 ```
-
+<br>
 
   - for **subsetted** gene activity:
 ```sh
 nohup dca output/sATAC_preprocessing/gene_activity_selected_<SAMPLE_NAME>_brca.csv output/sATAC_preprocessing/dca_gene_activity_selected_<SAMPLE_NAME>_brca --threads 6 --saveweights > nohup_for_<SAMPLE_NAME>_dca_gene_activity.out &
 ```
-    or, adapted to my case:
+or, adapted to my case:
 ```sh
 nohup dca output/sATAC_preprocessing/gene_activity_selected_220327_C1_brca.csv output/sATAC_preprocessing/dca_gene_activity_selected_220327_C1_brca --threads 6 --saveweights > nohup_for_220327_C1_dca_gene_activity.out &
 ```
-
+<br>
 
   - for **Visium** gene counts:
 ```sh
 nohup dca output/Visium_preprocessing/<VISIUM_SAMPLE_NAME>/gene_counts_<VISIUM_SAMPLE_NAME>.csv output/Visium_preprocessing/<VISIUM_SAMPLE_NAME>/dca_gene_counts_<VISIUM_SAMPLE_NAME> --threads 6 --saveweights > nohup_for_<VISIUM_SAMPLE_NAME>_dca_gene_counts.out &
 ```
-    or, adapted to my case:
+or, adapted to my case:
+
 ```sh
 nohup dca output/Visium_preprocessing/visium_FFPE_dcis_idc_10X_img_not_changed_allspots/gene_counts.csv output/Visium_preprocessing/visium_FFPE_dcis_idc_10X_img_not_changed_allspots/dca_gene_counts --threads 6 --saveweights > nohup_for_visium_FFPE_dcis_idc_10X_img_not_changed_allspots_dca_gene_counts.out &
 ```
-
+<br>
 
   - for **combined** prenormalised peaks data (this takes A LOT of time):
 ```sh
@@ -147,6 +151,9 @@ nohup dca output/sATAC_preprocessing/gene_activity_combined_brca.csv \
   output/sATAC_preprocessing/dca_gene_activity_combined_brca2 \
   --threads 3 --saveweights > nohup_for_dca_gene_activity_combined.out &
 ```
+</ul>
+<br>
+<br>
 
 ---
 
@@ -159,9 +166,9 @@ nohup dca output/sATAC_preprocessing/gene_activity_combined_brca.csv \
 
 
 
-\
-\
-As DCA is part of the unning the DCA denoiser in a ScanPy script. DOESN'T WORK
+
+
+As DCA is part of the ScanPy package as well, I tried to run the DCA denoiser in a ScanPy script. DOESN'T WORK
 - On the raw counts:
 ```sh
 python3 dca_denoiser.py output/sATAC_preprocessing/counts_signac_filtered_brca_q0_peak_bc_matrix.csv output/sATAC_preprocessing/denoised_counts_output.h5ad --threads 4
@@ -171,6 +178,8 @@ python3 dca_denoiser.py output/sATAC_preprocessing/counts_signac_filtered_brca_q
 ```sh
 python3 dca_denoiser.py output/sATAC_preprocessing/data_signac_filtered_brca_q0_peak_bc_matrix.csv output/sATAC_preprocessing/denoised_data_output.h5ad --threads 4
 ```
+<br>
+<br>
 
 
 
