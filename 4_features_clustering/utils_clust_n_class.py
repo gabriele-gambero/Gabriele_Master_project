@@ -153,7 +153,7 @@ def single_dim_red(single_df, selected_methods=None, n_comp=50, random_seed=123)
     '''
     # Define a dictionary of available models
     available_models = {
-        "PCA": PCA(n_components=n_comp),
+        "PCA": PCA(n_components=n_comp, random_state=random_seed),
         "SVD": TruncatedSVD(n_components=n_comp, random_state=random_seed),
         "ICA": FastICA(n_components=n_comp, random_state=random_seed),
         "NMF": NMF(n_components=n_comp, random_state = random_seed)#,
