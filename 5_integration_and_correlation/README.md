@@ -119,11 +119,11 @@ nohup dca output/sATAC_preprocessing/counts_signac_220327_C1_selected_brca_q0_pe
 
   - for **subsetted** gene activity:
 ```sh
-nohup dca output/sATAC_preprocessing/gene_activity_selected_<SAMPLE_NAME>_brca.csv output/sATAC_preprocessing/dca_gene_activity_selected_<SAMPLE_NAME>_brca --threads 6 --saveweights > nohup_for_<SAMPLE_NAME>_dca_gene_activity.out &
+nohup dca output/sATAC_preprocessing/gene_activity_selected_<SAMPLE_NAME>_brca_overlapping.csv output/sATAC_preprocessing/dca_gene_activity_selected_<SAMPLE_NAME>_brca_overlapping --threads 6 --saveweights > nohup_for_<SAMPLE_NAME>_dca_gene_activity.out &
 ```
 or, adapted to my case:
 ```sh
-nohup dca output/sATAC_preprocessing/gene_activity_selected_220327_C1_brca.csv output/sATAC_preprocessing/dca_gene_activity_selected_220327_C1_brca --threads 6 --saveweights > nohup_for_220327_C1_dca_gene_activity.out &
+nohup dca output/sATAC_preprocessing/gene_activity_selected_220327_C1_brca_overlapping.csv output/sATAC_preprocessing/dca_gene_activity_selected_220327_C1_brca_overlapping --threads 6 --saveweights > nohup_for_220327_C1_dca_gene_activity.out &
 ```
 <br>
 
