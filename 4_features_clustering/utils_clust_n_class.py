@@ -65,7 +65,7 @@ def pca_single_cumulative_variance_plot(sample, pkl_dict, norm_name, tilesize, n
 
 
 # ------------------------------------------------------------------------------
-def all_dim_red(merged_df, normalisation_method, colors_dict_satac_visium, tilesize, selected_methods=None, n_comp=2, random_seed=123):
+def all_dim_red(merged_df, normalisation_method, colors_dict_satac_visium, tilesize, selected_methods=None, n_comp=50, random_seed=123):
     '''
     Function for plotting some dimensionality reduction approaches for the merged dataframes and color by spatial method.
     Params:
