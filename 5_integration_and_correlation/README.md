@@ -1,4 +1,12 @@
-# Creating and managing the R Conda environment
+This folder represents the last step of the project where image-derived clusters' identity from both the modalities is checked.
+
+In particular, script ....
+
+TO BE FINISHED.
+
+---
+
+### Creating and managing the R Conda environment for this step
 
 Name of the environment: `r_env_corr`.
 ```sh
@@ -46,7 +54,7 @@ devtools::install_github("GreenleafLab/ArchR", ref="master", repos = BiocManager
 
 
 ---
-## Straight script execution
+#### Straight script execution
 I've also exported the scripts derived from the Jupyter notebook:
 ```sh
 conda deactivate
@@ -64,12 +72,15 @@ nohup Rscript script_cross_modality_correct_object_creation.R > nohup_script_cro
 
 
 ---
-# DCA - Peaks denoiser
-**[Deep Counts Autoencoder](https://github.com/theislab/dca)**
+### DCA - Counts denoiser
+**[Deep Counts Autoencoder (DCA)](https://github.com/theislab/dca)**
 
-ADD PACKAGE DESCRIPTION.
+**Package description** from GitHub folder:
+*A deep count autoencoder network to denoise scRNA-seq data and remove the dropout effect by taking the count structure, overdispersed nature and sparsity of the data into account using a deep autoencoder with zero-inflated negative binomial (ZINB) loss function.*
 
-The installation and correct execution of this "package" (as it's not a proper and real package) took me two days, so, after checking in the "issue" section of the package GitHub page, I managed to install it and make it run but only on the CPU and with a single core. Because of this, the code takes quite some time.
+**Installation process:**
+
+The installation and correct execution of this "package" (as it's not a proper and real package) took me 5 days, so, after checking in the "issue" section of the package GitHub page, I managed to install it and make it run but only on the CPU and with a single core. Because of this, the code takes quite some time.
 
 In the `utils` folder you'll find a `.yml` file to create the proper `mamba` environment to run DCA, as the packages stated in the package `setup.py` file aren't compatible.\
 The environment needs:
@@ -157,58 +168,4 @@ nohup dca output/sATAC_preprocessing/gene_activity_combined_brca.csv \
 
 ---
 
-
-
-
-
-
-
-
-
-
-
-
-As DCA is part of the ScanPy package as well, I tried to run the DCA denoiser in a ScanPy script. DOESN'T WORK
-- On the raw counts:
-```sh
-python3 dca_denoiser.py output/sATAC_preprocessing/counts_signac_filtered_brca_q0_peak_bc_matrix.csv output/sATAC_preprocessing/denoised_counts_output.h5ad --threads 4
-```
-
-- On the normalised counts:
-```sh
-python3 dca_denoiser.py output/sATAC_preprocessing/data_signac_filtered_brca_q0_peak_bc_matrix.csv output/sATAC_preprocessing/denoised_data_output.h5ad --threads 4
-```
-<br>
-<br>
-
-
-
-
-
-
-
-
-
-
----
-## DCA with Docker attempt
-It never worked out...
-  - with Docker container:
-```sh
-docker run --rm -it
--v /disk2/user/gabgam/the_project/5_integration_and_correlation/output/sATAC_preprocessing/
-quay.io/biocontainers/dca:0.3.4--pyhdfd78af_0
-dca data_signac_filtered_brca_q0_peak_bc_matrix.csv docker_dated_dca_peaks_q0_brca
-```
-  or:
-```sh
-docker exec -it dca_container_034 dca /disk2/user/gabgam/the_project/5_integration_and_correlation/output/sATAC_preprocessing/data_signac_filtered_brca_q0_peak_bc_matrix.csv /disk2/user/gabgam/the_project/5_integration_and_correlation/output/sATAC_preprocessing/docker_dated_dca_peaks_q0_brca
-```
-
-Check if it works:
-```sh 
-docker exec -it dca_container_034 dca ~/the_project/5_integration_and_correlation/output/sATAC_preprocessing/data_signac_filtered_brca_q0_peak_bc_matrix.csv ~/the_project/5_integration_and_correlation/output/sATAC_preprocessing/docker_dated_dca_peaks_q0_brca
-```
-```sh 
-docker exec -it dca_container_034 dca data/data_signac_filtered_brca_q0_peak_bc_matrix.csv data/docker_dated_dca_peaks_q0_brca
-```
+Other attempts with Docker containers and ScanPy implementation were tried but did not work.
