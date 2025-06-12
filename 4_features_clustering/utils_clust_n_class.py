@@ -495,14 +495,19 @@ def draw_tiles_on_wsi(wsi_image, coords_df, clust_n_colors_dict, vis_or_atac, um
         cluster_labels = [f"Cluster {int(c)}" for c in unique_clusters["Cluster"]]
         cluster_colors = [(r, g, b) for r, g, b in zip(unique_clusters["R"], unique_clusters["G"], unique_clusters["B"])]
     
-    # Add a horizontal legend
-    legend_patches = [mpatches.Patch(color=color, label=label) for label, color in sorted(zip(cluster_labels, cluster_colors), key = lambda x: x[0])]
-    fig.legend(handles=legend_patches, loc="lower center", ncol=len(cluster_labels), fontsize=12) # bbox_to_anchor=(0.5, 0.97),
-    # Add a horizontal legend
-    # legend_patches = [mpatches.Patch(color=[row.R/255, row.G/255, row.B/255], label=f"Cluster {int(row.cluster)}") 
-    #                    for _, row in df_cluster_colors.iterrows()]
-    # fig.legend(handles=legend_patches, loc="lower center", ncol=len(df_cluster_colors), fontsize=12)
-    
+        # Add a horizontal legend
+        legend_patches = [mpatches.Patch(color=color, label=label) for label, color in sorted(zip(cluster_labels, cluster_colors), key = lambda x: x[0])]
+        # ax.legend(handles=legend_patches, loc="lower center", ncol=len(cluster_labels), fontsize=12) # bbox_to_anchor=(0.5, 0.97),
+        # fig.legend(handles=legend_patches, loc="lower center", ncol=len(cluster_labels), fontsize=12) # bbox_to_anchor=(0.5, 0.97),
+        # Add a horizontal legend
+        # legend_patches = [mpatches.Patch(color=[row.R/255, row.G/255, row.B/255], label=f"Cluster {int(row.cluster)}") 
+        #                    for _, row in df_cluster_colors.iterrows()]
+        # fig.legend(handles=legend_patches, loc="lower center", ncol=len(df_cluster_colors), fontsize=12)
+        ax.legend(handles=legend_patches,
+          loc="lower center",
+          bbox_to_anchor=(0.5, -0.08),  # adjust vertical offset here
+          ncol=len(cluster_labels),
+          fontsize=12)
         
     if vis_or_atac == "visium":
         fig.suptitle(f'Clustering for the {vis_or_atac.capitalize()} {normalisation_name} sample', fontsize=22, fontweight="bold", y=1.05)
