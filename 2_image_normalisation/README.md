@@ -1,7 +1,3 @@
-This is the real and first step of the entire project. Sample naming, directory structure and saving system is defined in the content of this folder.
-
----
-
 ## Image normalisation
 
 Here is described the process of **tile normalisation**. This mainly happen by transfer of the color profile from a **reference image** to the target one (our tiles).
@@ -25,11 +21,7 @@ These methods were also applied on the WSIs and described in [step 0](../0_WSI_a
 
 ### Reference image
 
-Even if the inside the `reference_images` folder there more than one image, in the end we only used the template `reference_full.jpeg`, shown here:
-
-<p align="center">
-  <img src="./reference_images/reference_full.jpeg" alt="used_reference" style="width:40%;"/>
-</p>
+Even if the inside the `reference_images` folder there more than one image, in the end we only used the template `reference_full.jpeg`.
 
 ---
 **Folder content:**
