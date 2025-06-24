@@ -5,7 +5,22 @@ IMPORTANT: this it not the real first step of the analysis, but conceptually, it
 In this directory, you'll find a description of the **Spatial ATAC WSI alignment** and general WSI normalisation process.\
 The data described here, referred as output of the manual image alignment perfomed on Loupe Browser®, can be found in the `data` folder, in the previous repository of the path to this file. 
 
-The WSI alignment was needed due to incompatibility of HE staining and the Spatial ATAC protocol on the same sample section. For this reason, I0ve manually overlapped the HE adjacent section with the IHC analysed one.
+Content of the folder: <br>
+`0_WSI_alignment_and_normalisation`<br>
+`├── 0_images_alignment.ipynb` &rarr; code attempt for alignment of WSI<br>
+`├── 0_WSI_sATAC_normalisation_and_visualisation.ipynb` &rarr; normalisation of Spatial ATAC sample WSI<br>
+`├── 0_WSI_Visium_normalisation_and_visualisation.ipynb` &rarr; normalisation of Visium sample WSI<br>
+`├── scripts_for_sATAC_WSIs/` &rarr; Python scripts for offline Spatial ATAC WSI normalisation<br>
+`├── scripts_for_Visium_WSIs/` &rarr; Python scripts for offline Visium WSI normalisation<br>
+`├── figures/` &rarr; figures saving folder<br>
+`└── output/` &rarr; data output folder<br>
+
+The environments used for this step are the same ones of the second step. You can find the `.yaml` files [here](../the_project/2_image_normalisation/utils/).
+
+The WSI alignment was needed due to incompatibility of HE staining and the Spatial ATAC protocol on the same sample section. For this reason, I've manually overlapped the HE adjacent section with the IHC analysed one.
+
+
+
 
 ### 1. - Spatial ATAC WSI alignment
 
