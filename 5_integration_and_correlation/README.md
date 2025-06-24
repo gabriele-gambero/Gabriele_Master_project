@@ -5,7 +5,8 @@ In the notebooks, you'll see how the data has been processed, the quality checks
 ---
 
 
-Content of the folder: <br>
+Content of the folder:
+
 `5_integration_and_correlation`<br>
 `├── sATAC_analysis_and_integration.ipynb` &rarr; Spatial ATAC processing, QC, annotation and integration with image-based clusters<br>
 `├── Visium_analysis_and_integration.ipynb` &rarr; Visium processing, QC, annotation and integration with image-based clusters<br>
@@ -18,7 +19,10 @@ respective notebook<br>
 
 As always, to create the working environments, use the `.yaml` files inside the `utils` folder. Otherwise, below there are instructions to create an R Conda envinoment for Jupyter Notebooks.
 
-### Creating and managing the R Conda environment for this step
+
+
+
+# Creating and managing the R Conda environment for this step
 
 
 Name of the environment: `r_env_corr`.
