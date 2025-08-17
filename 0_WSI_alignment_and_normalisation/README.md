@@ -1,11 +1,13 @@
-IMPORTANT: this it not the real first step of the analysis, but conceptually, it should come before step 1, and that's why it's called step 0. So, before trying to use this code, I advice to refer to step 1.
+## Description of WSI alignment and normalisation
+
+IMPORTANT: this it not the real first step of the analysis, but conceptually, it should come before Step 1, and that's why it's called Step 0. So, if you are trying to replicate the work of my project, you should refer to [Step 1](../1_tiling/) first.
 
 ---
 
 In this directory, you'll find a description of the **Spatial ATAC WSI alignment** and general WSI normalisation process.\
-The data described here, referred as output of the manual image alignment perfomed on Loupe Browser®, can be found in the `data` folder, in the previous repository of the path to this file. 
+The data described here, referred as output of the manual image alignment perfomed on Loupe Browser®, can be found in the [`data` folder](../data/). 
 
-The WSI alignment was needed due to incompatibility of HE staining and the Spatial ATAC protocol on the same sample section. For this reason, I0ve manually overlapped the HE adjacent section with the IHC analysed one.
+The WSI alignment was needed due to incompatibility between H&E staining and the ATAC protocol for the same slice. Due to this reason, I've manually overlapped the H&E adjacent section with the IHC analysed one.
 
 ### 1. - Spatial ATAC WSI alignment
 

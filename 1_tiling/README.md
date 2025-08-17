@@ -4,9 +4,9 @@ This is the real and first step of the entire project. Sample naming, directory 
 
 ## WSI tiling
 
-Here is described the process of tiling: subdiving a Whole Slide Image (**WSI**) in square-shaped smaller images named **tiles**.
+Here is described the process of tiling: subdiving a Whole Slide Image (**WSI**) in smaller images named **tiles**.
 
-Considering that these two omics share the same Visium probe-printed support, the creation of the non-overlapping tiles directly relates to the spots dimentions and distances in the grid system: the **size of the tiles** was chosen to be **100 µm** and **68 µm**. The 55 µm option was discarded after finding out that in some cases not a single nucleus was captured, leading to non-informative content.
+Considering that to achieve Spatial ATAC shares the same Visium probe-printed support, the creation of the non-overlapping tiles directly relates to the spots dimentions and distances in the grid system: the **size of the tiles** was chosen to be **100 µm** and **68 µm**. The 55 µm option was discarded after finding out that in some cases not a single nucleus was captured, leading to non-informative content but even more doubts about the accuracy of the technology.
 
 Example of tile grid and size:
 
@@ -14,8 +14,8 @@ Example of tile grid and size:
   <img src="collage_zooms.png" alt="tiling_sizes" style="width:40%;"/>
 </p>
 
-**A)** **100 µm** tiles
-**B)** **68 µm** tiles
+**A)** **100 µm × 100 µm** tiles<br>
+**B)** **68 µm × 68 µm** tiles<br>
 
 ---
 Folder content:
