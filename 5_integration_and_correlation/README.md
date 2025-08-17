@@ -1,18 +1,39 @@
-This folder represents the last step of the project where image-derived clusters' identity from both the modalities is checked.
+## Integration and biological correlation of image-derived clusters
 
-In particular, script ....
+This folder represents the last step of the project where image-derived clusters' identity, from both the modalities, is checked.
 
-TO BE FINISHED.
+In the notebooks, you'll see how the data has been processed, the quality checks, the spot annotation via CCA, the scRNA-seq reference and the evaluation of image-based clusters identity. Here is the final output:
+
+![](./example_integration_final_output.png)
 
 ---
 
-### Creating and managing the R Conda environment for this step
+
+Content of the folder:
+
+`5_integration_and_correlation`<br>
+`├── sATAC_analysis_and_integration.ipynb` &rarr; Spatial ATAC processing, QC, annotation and integration with image-based clusters<br>
+`├── Visium_analysis_and_integration.ipynb` &rarr; Visium processing, QC, annotation and integration with image-based clusters<br>
+respective notebook<br>
+`├── figures/` &rarr; figures derived from the scripts or Jupyter Notebooks organised per sample <br>
+`├── utils/` &rarr; contains the used environments `.yaml` files and eventual useful scripts <br>
+`└── output/` &rarr; contains the normalised tiles, organised per sample, WSI (original or normalised) and size, and results of metrics evaluation<br>
+
+
+
+As always, to create the working environments, use the `.yaml` files inside the `utils` folder. Otherwise, below there are instructions to create an R Conda envinoment for Jupyter Notebooks.
+<br>
+<br>
+<br>
+
+## Creating and managing the R Conda environment for this step
+
+A particular focus is given to this process as I've performed the majority of the work on Jupyter Notebook with Python, but here we are implementing it with R. As Jupyter is not optimised for R, I've decided to share the tedious process for creating the environment and installing the packages.  
 
 Name of the environment: `r_env_corr`.
 ```sh
 conda create -n r_env_corr r-essentials r-base r-devtools -y
 conda activate r_env_corr
-
 # install Jupyter
 conda install -c conda-forge jupyterlab -y
 # install the R kernel
@@ -33,11 +54,8 @@ conda install bioconda::r-harmony
 conda install bioconda::r-loomr
 conda install bioconda::r-monocle3
 conda install bioconda::r-archr
-
 conda install conda-forge::r-gprofiler2
-
 conda install bu_cnio::r-seuratwrappers 
-
 conda install -n r_env_corr -c bioconda -c conda-forge     bioconductor-genomeinfodb     bioconductor-ensembldb     bioconductor-ensdb.hsapiens.v86     bioconductor-bsgenome.hsapiens.ucsc.hg38     bioconductor-dropletutils     bioconductor-genomicranges     bioconductor-genomicfeatures     bioconductor-annotationdbi     bioconductor-rtracklayer     bioconductor-rsamtools     bioconductor-biostrings     bioconductor-xvector     bioconductor-rhdf5     bioconductor-singlecellexperiment     bioconductor-delayedarray     bioconductor-delayedmatrixstats     bioconductor-hdf5array     bioconductor-beachmat     bioconductor-scuttle     r-rcurl     r-xml     r-matrix     r-patchwork     r-scales     r-viridis     r-purrr     r-ggplot2     r-dplyr     r-ica     r-spdep     r-jpeg     r-ggpubr     r-gplots     r-devtools
 ```
 
@@ -52,27 +70,8 @@ devtools::install_github('cole-trapnell-lab/monocle3')
 devtools::install_github("GreenleafLab/ArchR", ref="master", repos = BiocManager::repositories())
 ```
 
-
 ---
-#### Straight script execution
-I've also exported the scripts derived from the Jupyter notebook:
-```sh
-conda deactivate
-conda activate r_env_corr
-
-nohup Rscript creation_satac_selected_object_script.R > nohup_script_for_selected_obj_creation.out &
-nohup Rscript creation_satac_selected_object_script_v2.R > nohup_script_for_selected_obj_creation_v2.out &
-nohup Rscript combined_creation_satac_object_script.R > nohup_script_for_combined_obj_creation.out &
-nohup Rscript combined_creation_satac_object_script_v2.R > nohup_script_for_combined_obj_creation_v2.out &
-nohup Rscript temp_until_LSI.R > nohup_until_LSI.out &
-nohup Rscript temp_for_linked_peaks.R > nohup_for_temp_linked_peaks.out &
-nohup Rscript script_cross_modality_correct_object_creation.R > nohup_script_cross_modality_correct_object_creation.out &
-```
-
-
-
----
-### DCA - Counts denoiser
+## DCA - Count denoiser
 **[Deep Counts Autoencoder (DCA)](https://github.com/theislab/dca)**
 
 **Package description** from GitHub folder:
@@ -168,4 +167,4 @@ nohup dca output/sATAC_preprocessing/gene_activity_combined_brca.csv \
 
 ---
 
-Other attempts with Docker containers and ScanPy implementation were tried but did not work.
+Other attempts with Docker containers and ScanPy implementation were tried but did not succeedeed.
