@@ -1,12 +1,8 @@
 # environment name: example_kimianet_11_8
 
-# %%
 import os
 import tensorflow as tf
 import subprocess
-
-# %%
-
 import regex
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -21,14 +17,12 @@ from tensorflow.keras.layers import GlobalAveragePooling2D, Lambda
 from sklearn.metrics import confusion_matrix, classification_report
 from sklearn.model_selection import train_test_split
 
-# %%
+
 os.environ['XLA_FLAGS'] = '--xla_gpu_strict_conv_algorithm_picker=false'
 os.environ["TF_XLA_FLAGS"] = "--tf_xla_auto_jit=0"
 
-# %% [markdown]
+ 
 # Checking if the first chosen GPU was, in fact, selected.
-
-# %%
 # List physical devices available (CPU, GPU)
 gpus = tf.config.list_physical_devices('GPU')
 print("Available GPUs:", gpus)
@@ -37,8 +31,6 @@ for gpu in gpus:
     print("Device Name:", gpu.name)
     print("Device Type:", gpu.device_type)
 
-
-# %%
 if gpus:
     # Set only GPU:1 to be visible to TensorFlow
     try:
@@ -51,29 +43,23 @@ if gpus:
 print("Configured devices:", tf.config.get_visible_devices())
 
 
-# %% [markdown]
+ 
 # # 1.- Configuring variables
-
-# %% [markdown]
 # ## 1.1 - Setting the working path
-
-# %%
 os.chdir("/disk2/user/gabgam/work/gigi_env/the_project/3_features_extraction/")
 print(os.getcwd())
 
-# %% [markdown]
+ 
 # Model name.
-
-# %%
 model = "kimianet"
 
-# %% [markdown]
+ 
 # Model weights download link:
 # https://github.com/KimiaLabMayo/KimiaNet/blob/main/KimiaNet_Weights/weights/KimiaNetKerasWeights.h5
 # 
 # Or, with code:
 
-# %%
+
 import requests
 
 # Define the URL of the raw file
@@ -94,27 +80,25 @@ else:
     print(f"Failed to download. Status code: {response.status_code}")
 
 
-# %% [markdown]
+ 
 # Importing the summary files for both the techniques and the tiles dimension.\
 # These contain the path to all the tiles folder, the original and the normalised ones.
 
-# %%
+
 # SUMMARY_SATAC_100um = "/disk2/work/gabgam/gigi_env/the_project/2_image_normalisation/output/satac_C1/v3_allspots/tiles_100/final_summary_for_all_100um_normalised_tiles.csv"
 # SUMMARY_SATAC_68um = "/disk2/work/gabgam/gigi_env/the_project/2_image_normalisation/output/satac_C1/v3_allspots/tiles_68/final_summary_for_all_68um_normalised_tiles.csv"
 
 # SUMMARY_VISIUM_100um = "/disk2/work/gabgam/gigi_env/the_project/2_image_normalisation/output/visium_2022_FF_WG_10X/img_not_changed_allspots/tiles_100/final_summary_for_all_100um_normalised_tiles.csv"
 # SUMMARY_VISIUM_68um = "/disk2/work/gabgam/gigi_env/the_project/2_image_normalisation/output/visium_2022_FF_WG_10X/img_not_changed_allspots/tiles_68/final_summary_for_all_68um_normalised_tiles.csv"
-# %%
+
 SUMMARY_SATAC_100um = "/disk2/work/gabgam/gigi_env/the_project/2_image_normalisation/output/satac_C1/v3_allspots/tiles_100/final_summary_for_all_100um_normalised_tiles.csv"
 SUMMARY_SATAC_68um = "/disk2/work/gabgam/gigi_env/the_project/2_image_normalisation/output/satac_C1/v3_allspots/tiles_68/final_summary_for_all_68um_normalised_tiles.csv"
 
 SUMMARY_VISIUM_100um = "/disk2/work/gabgam/gigi_env/the_project/2_image_normalisation/output/visium_FFPE_dcis_idc_10X/img_not_changed_allspots/tiles_100/final_summary_for_all_100um_normalised_tiles.csv"
 SUMMARY_VISIUM_68um = "/disk2/work/gabgam/gigi_env/the_project/2_image_normalisation/output/visium_FFPE_dcis_idc_10X/img_not_changed_allspots/tiles_68/final_summary_for_all_68um_normalised_tiles.csv"
 
-# %% [markdown]
+ 
 # Extracting sample name and coordinates systems from files name.
-
-# %%
 # for sATAC
 temp_satac_names = SUMMARY_SATAC_100um.split('output/')[1].split('/tiles')[0].split("/")
 
@@ -130,69 +114,48 @@ IMAGE_VERSION_AND_COORDINATE_SYSTEM_VISIUM = temp_visium_names[1]
 
 print(f"Processing for:\nsATAC sample: {SAMPLE_SATAC}\nsATAC coordinates system: {IMAGE_VERSION_AND_COORDINATE_SYSTEM_SATAC}\n\nVisium sample: {SAMPLE_VISIUM}\nVisium coordinates system: {IMAGE_VERSION_AND_COORDINATE_SYSTEM_VISIUM}")
 
-# %% [markdown]
+ 
 # Choosing the reference and the name system based on `TARGET_IS_<filename>`.
-
-# %%
 # path to the target image
 PATH_TO_REFERENCE = "../2_image_normalisation/reference_images/reference_full.jpeg"
 # `TARGET_IS_<filename>`
 TARGET_IS = "target_is_reference_full"
 
-# %% [markdown]
+ 
 # Creating a dictionary for the path to the file, but with the reference image already defined.
-
-# %%
 complete_dict_summaries = {f"{SAMPLE_SATAC}_&_{IMAGE_VERSION_AND_COORDINATE_SYSTEM_SATAC}_&_{TARGET_IS}_100um": SUMMARY_SATAC_100um,
                   f"{SAMPLE_SATAC}_&_{IMAGE_VERSION_AND_COORDINATE_SYSTEM_SATAC}_&_{TARGET_IS}_68um": SUMMARY_SATAC_68um,
                   f"{SAMPLE_VISIUM}_&_{IMAGE_VERSION_AND_COORDINATE_SYSTEM_VISIUM}_&_{TARGET_IS}_100um": SUMMARY_VISIUM_100um,
                   f"{SAMPLE_VISIUM}_&_{IMAGE_VERSION_AND_COORDINATE_SYSTEM_VISIUM}_&_{TARGET_IS}_68um": SUMMARY_VISIUM_68um}
 complete_dict_summaries = {name: pd.read_csv(path, index_col = [0]) for name, path in complete_dict_summaries.items()}
 
-# %% [markdown]
+ 
 # Specify the normalisation methods that have been chosen and the `ORIGINAL WSI` with the exact name in the summaries.
-
-# %%
 SELECTED_METHODS = ["ORIGINAL WSI", "fromWSI_histomicsTK_macenko_nomasking", "histomicsTK_macenko_nomasking", "stainNET"]
 
-# %% [markdown]
+ 
 # Choosing the weights.
-
-# %%
 NETWORK_WEIGHTS_ADDRESS = f"models/{model}/KimiaNetKerasWeights.h5"
 
-# %% [markdown]
+ 
 # Setting the output path.
-
-# %%
 comparison_of_analyses = f"{SAMPLE_SATAC}_{IMAGE_VERSION_AND_COORDINATE_SYSTEM_SATAC}_&_{SAMPLE_VISIUM}_{IMAGE_VERSION_AND_COORDINATE_SYSTEM_VISIUM}"
 features_output_path = f"output/{model}/{comparison_of_analyses}/"
 
 os.makedirs(features_output_path, exist_ok = True)
 
-# %% [markdown]
 # # 2. - Preprocessing and Feature Extraction Functions
-
-# %%
 summary_satac_100um = pd.read_csv(SUMMARY_SATAC_100um, index_col= [0])
 
-# %% [markdown]
 # Let's import the summary files with the paths to the folders and select the paths to the tiles folders for the ORIGINAL WSI and the methods that worked out.
-
-# %%
 filter_summaries_by_method = {name: df[df['Normalisation Method'].isin(SELECTED_METHODS)] for name, df in complete_dict_summaries.items()}
 
-# %% [markdown]
 # Selecting by the specified normalisation methods and the target.
-
-# %%
 filter_summaries_by_method = {name: df[df['Normalisation Method'].isin(SELECTED_METHODS) & df["Target"].isin(["-", TARGET_IS])].reset_index() for name, df in complete_dict_summaries.items()}
 
 
-# %% [markdown]
+ 
 # These are the KimiaNet features extraction functions.\
-
-# %%
 def preprocessing_fn(input_batch, network_input_patch_width):
     org_input_size = tf.shape(input_batch)[1]
     scaled_input_batch = tf.cast(input_batch, 'float32') / 255.0  # Ensuring dtype is float32
@@ -258,15 +221,8 @@ def extract_features(patch_dir, network_weights_address,
     return pd.DataFrame.from_dict(feature_dict)
 
 
-# %% [markdown]
+# ------------------------------------------------------------------------------------------------------
 # Let's perform the real features extraction step.
-# 
-# Let's set the batch size (accordingly to GPU computational power), the image file format (tipically `.jpg`).\
-# The real extraction function will be called inside the dictionary where each key will contain all the info regarding the images in the folder (sample origin, size in micrometers and the eventual normalisation method) and the relative value will be the dataframe originated from the function which will contain all the extracted features per image (images indeces have their own real name).
-# 
-# In the end, all the feature dataframes will be saved as `.pickle` files in the `./output` folder.
-
-# %%
 batch_size = 16 #32
 img_format = 'jpg'
 network_input_patch_width = 1000 #224 #1000
