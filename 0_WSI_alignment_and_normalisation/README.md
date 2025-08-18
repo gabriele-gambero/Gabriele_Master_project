@@ -24,6 +24,11 @@ No warping or reduction/enlargment of the image has been performed as we think t
 The idea is to place the frame on the bottom of all the layers, pasting the IHC black and white image in the center of the frame as template (without touching the fiducial frames) and then try to overlap the real HE-stained slice on top of the previous IHC layer.\
 As a final step, the IHC is removed and the final result is a fake HE-stained slice of the original analysed slice that overlaps, as the best compromise, the analysed area referring to common morphological aspects.
 
+Here is the final output (from left to right: IHC image, original H&E, aligned H&E):
+![](wsi_alignment.png)
+<br>
+
+
 ### 2. - Manual image alignment on Loupe Browser®
 
 In Loupe Browser®, thanks to the added fiducial frame, I've selected the spots that truly overlap the tissue and saved all the useful output.

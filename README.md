@@ -60,8 +60,7 @@ The project workflow was realised with [XMind® software](https://xmind.app/).<b
 As described in the `data` folder, just a single Visium Breast Cancer and a single Spatial ATAC Breast Cancer samples have been used. The patients, the state and the thickness of the sections are unmatching; only the subtypes were matching.
 
 
-## Repository structure
-
+## Repository structure and how to replicate the work
 
 `main`<br>
 `├── 0_WSI_alignment_and_normalisation` &rarr; normalisation of WSIs<br>
@@ -72,3 +71,6 @@ As described in the `data` folder, just a single Visium Breast Cancer and a sing
 `├── 5_integration_and_correlation` &rarr; biological data processing and integration with tiles cluster<br>
 `├── data` &rarr; samples origin and description<br>
 `└── fonts` &rarr; font used for plotting (DM Sans)<br>
+
+
+If you want to replicate my work, I've organised the repository in 5 steps + 1 (step 0). Inside each folder there is a description of its content and the environments used for running the code. The code is supposed to be almost automatic, after setting the few initial personalised variables (always in capital letters).
