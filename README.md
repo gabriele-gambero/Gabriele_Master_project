@@ -6,7 +6,7 @@ Some modifications are still in progress, however, feel free to contact me at: g
 
 This repository contains the code and methodology implemented to understand whether the hispathological component of spatial omics can be used to bridge them, instead of using the way more common biological one.  <br>
 
-Author: Gabriele Gambero<br>
+>Author: Gabriele Gambero<br>
 Supervisor: Dr. Carsten Daub <br>
 Department of Medicine (Huddinge) <br>
 Karolinska Institutet, Stockholm (Sweden)<br>
