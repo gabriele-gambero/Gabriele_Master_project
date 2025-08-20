@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 This folder contains the methodology for feature extraction from tiles using two models:
 
 - KimiaNet &rarr; a Convolutional Neural Network ([paper](https://www.nature.com/articles/s41591-024-02857-3))<br>
 - UNI2 &rarr; a general purpose foundation model ([paper](https://www.sciencedirect.com/science/article/pii/S1361841521000785))<br>
+=======
+## Feature Extraction
+
+This folder contains the methodology to perform feature extraction from the previously created and color-normalised tiles. For this end, we have applied two histopathology pre-trained deep learning models without fine-tuning steps:
+
+- **KimiaNet** &rarr; a Convolutional Neural Network ([paper](https://www.nature.com/articles/s41591-024-02857-3))<br>
+- **UNI2** &rarr; a general purpose Foundation Model ([paper](https://www.sciencedirect.com/science/article/pii/S1361841521000785))<br>
+>>>>>>> master_v6
 
 Content of the folder: <br>
 `3_features_extraction`<br>

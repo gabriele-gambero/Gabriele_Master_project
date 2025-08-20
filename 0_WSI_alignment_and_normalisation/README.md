@@ -1,10 +1,13 @@
-IMPORTANT: this it not the real first step of the analysis, but conceptually, it should come before step 1, and that's why it's called step 0. So, before trying to use this code, I advice to refer to step 1.
+## Description of WSI alignment and normalisation
+
+IMPORTANT: this it not the real first step of the analysis, but conceptually, it should come before Step 1, and that's why it's called Step 0. So, if you are trying to replicate the work of my project, you should refer to [Step 1](../1_tiling/) first.
 
 ---
 
 In this directory, you'll find a description of the **Spatial ATAC WSI alignment** and general WSI normalisation process.\
-The data described here, referred as output of the manual image alignment perfomed on Loupe Browser®, can be found in the `data` folder, in the previous repository of the path to this file. 
+The data described here, referred as output of the manual image alignment perfomed on Loupe Browser®, can be found in the [`data` folder](../data/). 
 
+<<<<<<< HEAD
 Content of the folder: <br>
 `0_WSI_alignment_and_normalisation`<br>
 `├── 0_images_alignment.ipynb` &rarr; code attempt for alignment of WSI<br>
@@ -21,6 +24,9 @@ The WSI alignment was needed due to incompatibility of HE staining and the Spati
 
 
 
+=======
+The WSI alignment was needed due to incompatibility between H&E staining and the ATAC protocol for the same slice. Due to this reason, I've manually overlapped the H&E adjacent section with the IHC analysed one.
+>>>>>>> master_v6
 
 ### 1. - Spatial ATAC WSI alignment
 
@@ -36,6 +42,11 @@ No warping or reduction/enlargment of the image has been performed as we think t
 
 The idea is to place the frame on the bottom of all the layers, pasting the IHC black and white image in the center of the frame as template (without touching the fiducial frames) and then try to overlap the real HE-stained slice on top of the previous IHC layer.\
 As a final step, the IHC is removed and the final result is a fake HE-stained slice of the original analysed slice that overlaps, as the best compromise, the analysed area referring to common morphological aspects.
+
+Here is the final output (from left to right: IHC image, original H&E, aligned H&E):
+![](wsi_alignment.png)
+<br>
+
 
 ### 2. - Manual image alignment on Loupe Browser®
 

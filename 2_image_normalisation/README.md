@@ -2,6 +2,12 @@
 
 Here is described the process of **tile normalisation**. This mainly happen by transfer of the color profile from a **reference image** to the target one (our tiles).
 
+Example:
+<p align="center">
+  <img src="normalisation_example.png" alt="normalisation example" style="width:80%;"/>
+</p>
+
+
 In total, 12 implementations, derived from a few foundation algorithms, were tried:
 1) **Macenko's method** from **StainTools package**
 2) **Reinhard's method** from **StainTools package**
@@ -22,6 +28,16 @@ These methods were also applied on the WSIs and described in [step 0](../0_WSI_a
 ### Reference image
 
 Even if the inside the `reference_images` folder there more than one image, in the end we only used the template `reference_full.jpeg`.
+
+### Evaluation of normalisation
+To evaluate whether color normalisation didn't add artifacts but just changed the color profile of the image, we used three pairwise (original vs normalised) metrics:
+- SSIM ➜ Structural Similarity Index Measure
+- LPIPS ➜ Learned Perceptual Image Patch Similarity
+- PSNR ➜ Peak Signal-to-Noise Ratio
+<\br>
+<\br>
+
+
 
 ---
 **Folder content:**<br>
