@@ -14,13 +14,9 @@ Example of tile grid and size:
   <img src="collage_zooms.png" alt="tiling_sizes" style="width:40%;"/>
 </p>
 
-<<<<<<< HEAD
-**A)** **100 µm** tiles <br>
-**B)** **68 µm** tiles
-=======
+
 **A)** **100 µm × 100 µm** tiles<br>
 **B)** **68 µm × 68 µm** tiles<br>
->>>>>>> master_v6
 
 ---
 Folder content:

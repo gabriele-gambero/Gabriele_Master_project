@@ -1,14 +1,10 @@
 ## Integration and biological correlation of image-derived clusters
 
-<<<<<<< HEAD
-In the notebooks, you'll see how the data has been processed, the quality checks, the spot annotation via CCA and scRNA-seq reference and the evaluation of image-based clusters identity.
-=======
 This folder represents the last step of the project where image-derived clusters' identity, from both the modalities, is checked.
 
 In the notebooks, you'll see how the data has been processed, the quality checks, the spot annotation via CCA, the scRNA-seq reference and the evaluation of image-based clusters identity. Here is the final output:
 
 ![](./example_integration_final_output.png)
->>>>>>> master_v6
 
 ---
 
@@ -26,14 +22,7 @@ respective notebook<br>
 
 
 As always, to create the working environments, use the `.yaml` files inside the `utils` folder. Otherwise, below there are instructions to create an R Conda envinoment for Jupyter Notebooks.
-<<<<<<< HEAD
 
-
-
-
-# Creating and managing the R Conda environment for this step
-
-=======
 <br>
 <br>
 <br>
@@ -41,7 +30,6 @@ As always, to create the working environments, use the `.yaml` files inside the 
 ## Creating and managing the R Conda environment for this step
 
 A particular focus is given to this process as I've performed the majority of the work on Jupyter Notebook with Python, but here we are implementing it with R. As Jupyter is not optimised for R, I've decided to share the tedious process for creating the environment and installing the packages.  
->>>>>>> master_v6
 
 Name of the environment: `r_env_corr`.
 ```sh
@@ -84,11 +72,7 @@ devtools::install_github("GreenleafLab/ArchR", ref="master", repos = BiocManager
 ```
 
 ---
-<<<<<<< HEAD
-### DCA - Counts denoiser
-=======
 ## DCA - Count denoiser
->>>>>>> master_v6
 **[Deep Counts Autoencoder (DCA)](https://github.com/theislab/dca)**
 
 **Package description** from GitHub folder:

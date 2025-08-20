@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-This folder contains the methodology for image-derived feature processing and clustering, organised by extraction model.
-
-=======
 ## Feature clustering
 
-In this step we processed and tried to integrate image-derived features via dimensionality reduction and clustering, just like in a Single-Cell analysis. 
-
----
+In this step we processed and tried to integrate image-derived features via dimensionality reduction and clustering, just like in a Single-Cell analysis.<br>
+<br>
 
 Being this process completely unsupervised and since we operated without training models for classification purposes, the identity of the generated clusters remains unknown. Before comparing this to their biological content, an initial assessment of the method can happen by comparison with the pathologist annotation. Here is an example for the Visium sample:
 
@@ -15,7 +10,6 @@ Being this process completely unsupervised and since we operated without trainin
 ---
 
 The folders are organised by extraction model.
->>>>>>> master_v6
 
 Content of the folder: <br>
 `4_features_clustering`<br>
