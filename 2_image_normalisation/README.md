@@ -34,8 +34,8 @@ To evaluate whether color normalisation didn't add artifacts but just changed th
 - SSIM ➜ Structural Similarity Index Measure
 - LPIPS ➜ Learned Perceptual Image Patch Similarity
 - PSNR ➜ Peak Signal-to-Noise Ratio
-<\br>
-<\br>
+<br>
+<br>
 
 
 
