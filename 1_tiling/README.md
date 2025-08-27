@@ -14,15 +14,17 @@ Example of tile grid and size:
   <img src="collage_zooms.png" alt="tiling_sizes" style="width:40%;"/>
 </p>
 
+
 **A)** **100 µm × 100 µm** tiles<br>
 **B)** **68 µm × 68 µm** tiles<br>
 
 ---
 Folder content:
-- `1_tiles_from_sATAC_manual_alignment.ipynb` describes the tiling process for the Spatial ATAC sample
-- `1_tiles_from_visium.ipynb` describes the tiling process for the Visium sample
-- `output\` folder contains the tiles, organised per sample, WSI (original or normalised) and size
-- `figures\` folder contains the important figures derived from the initial Jupyter Notebooks organised per sample 
-- `utils\` folder contains the environments `.yaml` files and eventual useful scripts 
 
-
+Content of the folder: <br>
+`1_tiling`<br>
+`├── 1_tiles_from_sATAC_manual_alignment.ipynb` &rarr; describes the tiling process for the Spatial ATAC sample<br>
+`├── 1_tiles_from_visium.ipynb` &rarr; describes the tiling process for the Visium sample<br>
+`├── utils/` &rarr; contains the environments `.yaml` files and eventual useful scripts<br>
+`├── figures/` &rarr; contains the important figures derived from the initial Jupyter Notebooks organised per sample<br>
+`└── output/` &rarr; contains the tiles, organised per sample, WSI (original or normalised) and size<br>

@@ -1,1 +1,0 @@
-The following tiles have failed normalization:

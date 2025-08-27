@@ -7,6 +7,18 @@ IMPORTANT: this it not the real first step of the analysis, but conceptually, it
 In this directory, you'll find a description of the **Spatial ATAC WSI alignment** and general WSI normalisation process.\
 The data described here, referred as output of the manual image alignment perfomed on Loupe Browser®, can be found in the [`data` folder](../data/). 
 
+Content of the folder: <br>
+`0_WSI_alignment_and_normalisation`<br>
+`├── 0_images_alignment.ipynb` &rarr; code attempt for alignment of WSI<br>
+`├── 0_WSI_sATAC_normalisation_and_visualisation.ipynb` &rarr; normalisation of Spatial ATAC sample WSI<br>
+`├── 0_WSI_Visium_normalisation_and_visualisation.ipynb` &rarr; normalisation of Visium sample WSI<br>
+`├── scripts_for_sATAC_WSIs/` &rarr; Python scripts for offline Spatial ATAC WSI normalisation<br>
+`├── scripts_for_Visium_WSIs/` &rarr; Python scripts for offline Visium WSI normalisation<br>
+`├── figures/` &rarr; figures saving folder<br>
+`└── output/` &rarr; data output folder<br>
+
+The environments used for this step are the same ones of the second step. You can find the `.yaml` files [here](../the_project/2_image_normalisation/utils/).
+
 The WSI alignment was needed due to incompatibility between H&E staining and the ATAC protocol for the same slice. Due to this reason, I've manually overlapped the H&E adjacent section with the IHC analysed one.
 
 ### 1. - Spatial ATAC WSI alignment
@@ -23,6 +35,11 @@ No warping or reduction/enlargment of the image has been performed as we think t
 
 The idea is to place the frame on the bottom of all the layers, pasting the IHC black and white image in the center of the frame as template (without touching the fiducial frames) and then try to overlap the real HE-stained slice on top of the previous IHC layer.\
 As a final step, the IHC is removed and the final result is a fake HE-stained slice of the original analysed slice that overlaps, as the best compromise, the analysed area referring to common morphological aspects.
+
+Here is the final output (from left to right: IHC image, original H&E, aligned H&E):
+![](wsi_alignment.png)
+<br>
+
 
 ### 2. - Manual image alignment on Loupe Browser®
 

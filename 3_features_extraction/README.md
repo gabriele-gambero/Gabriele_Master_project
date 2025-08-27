@@ -5,6 +5,7 @@ This folder contains the methodology to perform feature extraction from the prev
 - **KimiaNet** &rarr; a Convolutional Neural Network ([paper](https://www.nature.com/articles/s41591-024-02857-3))<br>
 - **UNI2** &rarr; a general purpose Foundation Model ([paper](https://www.sciencedirect.com/science/article/pii/S1361841521000785))<br>
 
+
 Content of the folder: <br>
 `3_features_extraction`<br>
 `├── models/` &rarr; folder with feature extraction models (KimiaNet and UNI2-h) and scripts <br>

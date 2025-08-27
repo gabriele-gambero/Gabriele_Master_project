@@ -13,8 +13,7 @@ Content of the folder:
 
 `5_integration_and_correlation`<br>
 `├── sATAC_analysis_and_integration.ipynb` &rarr; Spatial ATAC processing, QC, annotation and integration with image-based clusters<br>
-`├── Visium_analysis_and_integration.ipynb` &rarr; Visium processing, QC, annotation and integration with image-based clusters<br>
-respective notebook<br>
+`├── Visium_analysis_and_integration.ipynb` &rarr; Visium processing, QC, annotation and integration with image-based clusters respective notebook<br>
 `├── figures/` &rarr; figures derived from the scripts or Jupyter Notebooks organised per sample <br>
 `├── utils/` &rarr; contains the used environments `.yaml` files and eventual useful scripts <br>
 `└── output/` &rarr; contains the normalised tiles, organised per sample, WSI (original or normalised) and size, and results of metrics evaluation<br>
@@ -22,8 +21,7 @@ respective notebook<br>
 
 
 As always, to create the working environments, use the `.yaml` files inside the `utils` folder. Otherwise, below there are instructions to create an R Conda envinoment for Jupyter Notebooks.
-<br>
-<br>
+
 <br>
 
 ## Creating and managing the R Conda environment for this step
