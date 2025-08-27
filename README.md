@@ -2,7 +2,7 @@
 
 Hi! This is my Master's thesis project!
 
-This repository contains the code and methodology implemented to understand whether the hispathological component of spatial omics can be used to bridge them, instead of using the way more common biological one.  <br>
+This repository contains the code and methodology implemented to understand whether the histopathological component of spatial omics can be used to bridge them, instead of using the way more common biological one.  <br>
 
 >Author: Gabriele Gambero<br>
 Supervisor: Dr. Carsten Daub <br>
